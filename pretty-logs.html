@@ -141,7 +141,7 @@
             <br />
 
             <label for="#upload-esea">Upload ESEA stats:</label>
-            <input id="upload-esea" type="file" accept="text/html" />
+            <input id="upload-esea" type="file" />
             <br />
 
             <button id="reorder-players">Reorder</button>
@@ -343,8 +343,8 @@
                 tmp.innerHTML = table
                 window.tmp = tmp
 
-                const len = html.match(/\/ (\d+):(\d+) \//, html)
-                const t = parseInt(len[1]) + parseInt(len[2]) / 60
+                const len = html.match(/\/ (?:(\d+):)?(\d+):(\d+) \//)
+                const t = parseInt(len[1] || 0) * 60 + parseInt(len[2]) + parseInt(len[3]) / 60
 
                 const players = Array.from(tmp.children[0].children)
                     .concat(Array.from(tmp.children[5].children))
