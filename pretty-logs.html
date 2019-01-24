@@ -177,17 +177,8 @@
 
             <table id="stats"></table>
 
-            <div id = "legend">
-                K = KILLS
-                | A = ASSISTS
-                | D = DEATHS
-                | DA = DAMAGE
-                | DT = DAMAGE TAKEN
-                | HR = HEALS RECEIVED
-                | M = MINUTE
-            </div>
+            <div id = "legend"></div>
         </div>
-
 
     </body>
     <script>
@@ -237,11 +228,12 @@
                             <tr id="stats-header">
                                 <th class="player-name"></th>
                                 <th class="player-class"></th>
+                                <th class="player-stat">DA</th>
                                 <th class="player-stat">K</th>
                                 <th class="player-stat">A</th>
                                 <th class="player-stat">D</th>
                                 <th class="player-stat">K/D</th>
-                                <th class="player-stat">K+A/D</th>
+                                <!-- <th class="player-stat">K+A/D</th> !-->
                                 <th class="player-stat">DA/M</th>
                                 <th class="player-stat">DT/M</th>
                                 <th class="player-stat">HR/M</th>
@@ -264,11 +256,12 @@
                                 <tr>
                                     <td class="player-name" contenteditable>${ data.names[id] }</td>
                                     <td class="player-class class-${ p.class_stats[0].type }" onclick="cycleClass(this)"></td>
+                                    <td class="player-stat" onclick="highlightStat(this)">${ p.dmg }</td>
                                     <td class="player-stat" onclick="highlightStat(this)">${ p.kills }</td>
                                     <td class="player-stat" onclick="highlightStat(this)">${ p.assists }</td>
                                     <td class="player-stat" onclick="highlightStat(this)">${ p.deaths }</td>
                                     <td class="player-stat" onclick="highlightStat(this)">${ p.kpd }</td>
-                                    <td class="player-stat" onclick="highlightStat(this)">${ p.kapd }</td>
+                                    <!-- <td class="player-stat" onclick="highlightStat(this)">${ p.kapd }</td> !-->
                                     <td class="player-stat" onclick="highlightStat(this)">${ p.dapm }</td>
                                     <td class="player-stat" onclick="highlightStat(this)">${ (p.dt / (data.info.total_length / 60)).toFixed(0) }</td>
                                     <td class="player-stat" onclick="highlightStat(this)">${ (p.hr / (data.info.total_length / 60)).toFixed(0) }</td>
@@ -279,6 +272,18 @@
                         var el = id("stats")
                         el.innerHTML = players
                         el.children[0].children[5].insertAdjacentHTML("afterEnd", head)
+
+                        var legend = id("legend")
+                        legend.innerHTML = [
+                            "K = KILLS",
+                            "A = ASSISTS",
+                            "D = DEATHS",
+                            "DA = DAMAGE",
+                            "DT = DAMAGE TAKEN",
+                            "HR = HEALS RECEIVED",
+                            "M = MINUTE"
+                        ]
+                        .join(" | ")
                     })
                 })
 
@@ -327,11 +332,12 @@
                     <tr id="stats-header">
                         <th class="player-name"></th>
                         <th class="player-class"></th>
+                        <th class="player-stat">DA</th>
                         <th class="player-stat">K</th>
                         <th class="player-stat">A</th>
                         <th class="player-stat">D</th>
                         <th class="player-stat">K/D</th>
-                        <th class="player-stat">K+A/D</th>
+                        <!-- <th class="player-stat">K+A/D</th> !-->
                         <th class="player-stat">DA/M</th>
                     </tr>
                 `
@@ -358,11 +364,12 @@
                             <tr>
                                 <td class="player-name" contenteditable>${ c[0].innerText }</td>
                                 <td class="player-class" onclick="cycleClass(this)"></td>
+                                <td class="player-stat" onclick="highlightStat(this)">${ da }</td>
                                 <td class="player-stat" onclick="highlightStat(this)">${ k }</td>
                                 <td class="player-stat" onclick="highlightStat(this)">${ a }</td>
                                 <td class="player-stat" onclick="highlightStat(this)">${ d }</td>
                                 <td class="player-stat" onclick="highlightStat(this)">${ (k/d).toFixed(1) }</td>
-                                <td class="player-stat" onclick="highlightStat(this)">${ ((k+a)/d).toFixed(1) }</td>
+                                <!-- <td class="player-stat" onclick="highlightStat(this)">${ ((k+a)/d).toFixed(1) }</td> !-->
                                 <td class="player-stat" onclick="highlightStat(this)">${ (da/t).toFixed(0) }</td>
                             </tr>
                         `
@@ -372,6 +379,16 @@
                 var el = id("stats")
                 el.innerHTML = players
                 el.children[0].children[5].insertAdjacentHTML("afterEnd", head)
+
+                var legend = id("legend")
+                legend.innerHTML = [
+                    "K = KILLS",
+                    "A = ASSISTS",
+                    "D = DEATHS",
+                    "DA = DAMAGE",
+                    "M = MINUTE"
+                ]
+                .join(" | ")
             }
         })
 
@@ -398,7 +415,6 @@
                 id("red-logo").src = reader.result
             }
         })
-
 
         id("download").addEventListener("click", () => {
             html2canvas(id("render")).then((c) => {
