@@ -238,6 +238,3 @@ id("download").addEventListener("click", () => {
         document.body.removeChild(link)
     })
 })
-
-id("match-url").value = "https://logs.tf/2187917"
-
