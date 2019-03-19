@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html spellcheck="false">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ascent Pretty Logs</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="gotham.css">
+    </head>
+    <body>
+        <div id="panel">
+            <h1>Ascent Stats Image Thingie</h1>
+            <h3>Usage:</h3>
+            <p>For ETF2L logs, paste a logs.tf URL in the field</p>
+            <p>For ESEA stats, visit the state page, right click and save the HTML page, upload it through the file picker</p>
+            <p>Classes need to be manually set for ESEA, once done, click "Reorder" to sort them</p>
+            <p>Don't forget to check the score by the way</p>
+            <p>Click on text to edit it</p>
+            <p>Click on class icon to cycle it</p>
+            <p>Click on stats to highlight it</p>
+            <p>Background size: 1400px*1600px</p>
+            <p>Logo size: 320px*320px</p>
+
+            <input id="match-url" placeholder="https://logs.tf/123..." />
+            <button id="load-match">Load</button>
+            <br />
+
+            <label for="#upload-esea">Upload ESEA stats:</label>
+            <input id="upload-esea" type="file" />
+            <br />
+
+            <button id="reorder-players">Reorder</button>
+            <br />
+
+            <button id="swap-teams">Swap teams</button>
+            <br />
+
+            <label for="#upload-background">Pick a background picture:</label>
+            <input id="upload-background" type="file" accept="image/*" />
+            <br />
+
+            <label for="#upload-blu-logo">Pick a logo for blu team:</label>
+            <input id="upload-blu-logo" type="file" accept="image/*" />
+            <br />
+
+            <label for="#upload-red-logo">Pick a logo for red team:</label>
+            <input id="upload-red-logo" type="file" accept="image/*" />
+            <br />
+
+            <button id="download">Download result</button>
+        </div>
+
+        <div id="render">
+            <span id="message" contenteditable>GG!</span>
+            <span id="blu-name" contenteditable>ASCENT</span>
+            <img id="blu-logo" src="ascent-logo.png">
+            <span id="blu-score" contenteditable>0</span>
+            <span id="score-sep">-</span>
+            <span id="red-score" contenteditable>0</span>
+            <img id="red-logo" src="blank-logo.png">
+            <span id="red-name" contenteditable>TEAM</span>
+            <table id="stats"></table>
+            <div id = "legend"></div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
