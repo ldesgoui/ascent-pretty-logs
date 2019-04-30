@@ -159,7 +159,7 @@ id("upload-esea").addEventListener("change", (e) => {
         // filthy hacks ahead
         let html = reader.result.replace(/\n/g, "").replace(/src="[^"]+"/g, "")
 
-        let table = html.match(/<table class=" Table sc-bdVaJa bSbSZk">.+<\/table>/, html)[0]
+        let table = html.match(/<table class=" Table sc-bdVaJa AHkON">.+<\/table>/, html)[0]
         let tmp = document.createElement("div")
         tmp.innerHTML = table
         window.tmp = tmp
