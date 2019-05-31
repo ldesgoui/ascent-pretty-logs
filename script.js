@@ -156,16 +156,13 @@ id("upload-esea").addEventListener("change", (e) => {
                 <th class="player-stat">DA/M</th>
             </tr>
         `
-        // filthy hacks ahead
         let html = reader.result.replace(/\n/g, "").replace(/src="[^"]+"/g, "")
 
-        let table = html.match(/<table class=" Table sc-bdVaJa ksQxxr">.+<\/table>/, html)[0]
-        let tmp = document.createElement("div")
-        tmp.innerHTML = table
-        window.tmp = tmp
+        let doc = new DOMParser().parseFromString(html, "text/html")
+        let tmp = doc.getElementsByTagName('table')[2]
 
-        let players = Array.from(tmp.children[0].children[1].children)
-            .concat(Array.from(tmp.children[0].children[3].children))
+        let players = Array.from(tmp.children[1].children)
+            .concat(Array.from(tmp.children[3].children))
             .map((el) => {
                 let c = el.children
                 let k = parseInt(c[5].innerText)
