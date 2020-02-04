@@ -1,129 +1,85 @@
-body {
-    padding: 20px;
-    background-color: black;
-    color: white;
-    font-family: 'Gotham';
-    font-style: italic;
-    font-weight: bold;
-}
-#panel :not(h1) { font-style: normal; font-weight: 400; }
-#panel * { margin: 10px 4px; }
-
 #render {
-    height: 1600px;
-    width: 1400px;
-
-    padding: 21px 42px;
-
-    display: grid;
-    grid-row-gap: 21px;
-    grid-template-areas:
-        "message    message     message     message     message"
-        "blu-logo   blu-score   score-sep   red-score   red-logo"
-        "blu-name   blu-name    .           red-name    red-name"
-        "stats      stats       stats       stats       stats"
-        "legend     legend      legend      legend      legend";
-    grid-template-columns: 2fr 1fr 0.1fr 1fr 2fr;
-    grid-template-rows: auto 320px 144px 694px 22px;
-    place-items: center center;
-
-    background-color: #f4f4f4;
-    background-position: center;
-    background-size: cover;
-
-    color: #181818;
+  display: grid;
+  grid-row-gap: 21px;
+  grid-template-areas:
+    "message    message     message     message     message"
+    "blu-logo   blu-score   score-sep   red-score   red-logo"
+    "blu-name   blu-name    .           red-name    red-name"
+    "stats      stats       stats       stats       stats"
+    "legend     legend      legend      legend      legend";
+  grid-template-columns: 2fr 1fr 0fr 1fr 2fr;
+  grid-template-rows: 2fr 320px 1fr 666px 27px;
+  place-items: center center;
 }
 
-#blu-logo   { grid-area: blu-logo; }
-#blu-name   { grid-area: blu-name; }
-#blu-score  { grid-area: blu-score; }
-#legend     { grid-area: legend; }
-#message    { grid-area: message; }
-#red-logo   { grid-area: red-logo; }
-#red-name   { grid-area: red-name; }
-#red-score  { grid-area: red-score; }
-#score-sep  { grid-area: score-sep; }
-#stats      { grid-area: stats; }
-
-#message {
-    font-size: 64px;
-    text-align: center
+#blu-logo {
+  grid-area: blu-logo;
 }
 
-#blu-logo, #red-logo {
-    height: 320px;
+#blu-name {
+  grid-area: blu-name;
 }
 
-#blu-score, #red-score {
-    font-size: 256px;
-}
-
-#score-sep {
-    font-size: 128px;
-}
-
-#blu-name, #red-name {
-    font-size: 64px;
-    text-align: center;
-}
-
-#stats {
-    width: 100%;
-}
-
-tr:nth-child(-n+7) td:first-child { border-left:  solid 4px #00aef0; }
-tr:nth-child(-n+7) td:last-child  { border-right: solid 4px #00aef0; }
-tr:nth-child( n+8) td:first-child { border-left:  solid 4px #484848; }
-tr:nth-child( n+8) td:last-child  { border-right: solid 4px #484848; }
-
-#stats th {
-    color: #5b616a;
-    font-size: 20px;
-    padding: 10px 30px 10px 15px;
-}
-
-#stats td {
-    background-color: #5b616a7f;
-    font-size: 28px;
-    padding: 10px 30px;
-}
-
-.player-name {
-    max-width: 320px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.player-class {
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 15px;
-}
-
-.player-stat {
-    text-align: right;
-}
-
-.player-stat.highlight {
-    text-decoration: underline;
-}
-
-tr:nth-child(-n+7) .player-stat.highlight {
-    text-decoration-color: #00aef0;
-}
-
-tr:nth-child( n+8) .player-stat.highlight {
-    text-decoration-color: #484848;
+#blu-score {
+  grid-area: blu-score;
 }
 
 #legend {
-    color: #5b616a;
-    font-size: 20px;
-    text-align: center;
+  grid-area: legend;
 }
 
-.class-scout { background-image: url('icon-scout.png'); }
-.class-soldier { background-image: url('icon-soldier.png'); }
-.class-demoman { background-image: url('icon-demoman.png'); }
-.class-medic { background-image: url('icon-medic.png'); }
+#message {
+  grid-area: message;
+}
+
+#red-logo {
+  grid-area: red-logo;
+}
+
+#red-name {
+  grid-area: red-name;
+}
+
+#red-score {
+  grid-area: red-score;
+}
+
+#score-sep {
+  grid-area: score-sep;
+}
+
+#stats {
+  grid-area: stats;
+}
+
+tr:nth-child(-n + 7) td:first-child {
+  border-left: solid 4px #00aef0;
+}
+
+tr:nth-child(-n + 7) td:last-child {
+  border-right: solid 4px #00aef0;
+}
+
+tr:nth-child(n + 8) td:first-child {
+  border-left: solid 4px #484848;
+}
+
+tr:nth-child(n + 8) td:last-child {
+  border-right: solid 4px #484848;
+}
+
+.class-scout {
+  background-image: url("icon-scout.png");
+}
+
+.class-soldier {
+  background-image: url("icon-soldier.png");
+}
+
+.class-demoman {
+  background-image: url("icon-demoman.png");
+}
+
+.class-medic {
+  background-image: url("icon-medic.png");
+}

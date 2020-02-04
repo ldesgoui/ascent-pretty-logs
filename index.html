@@ -1,68 +1,140 @@
 <!DOCTYPE html>
 <html spellcheck="false">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Ascent Pretty Logs</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="gotham.css">
-    </head>
-    <body>
-        <div id="panel">
-            <h1>Ascent Stats Image Thingie</h1>
-            <h3>Usage:</h3>
-            <p>For ETF2L logs, paste a logs.tf URL in the field</p>
-            <p>For ESEA stats, visit the state page, right click and save the HTML page, upload it through the file picker</p>
-            <p>Classes need to be manually set for ESEA, once done, click "Reorder" to sort them</p>
-            <p>Don't forget to check the score by the way</p>
-            <p>Click on text to edit it</p>
-            <p>Click on class icon to cycle it</p>
-            <p>Click on stats to highlight it</p>
-            <p>Background size: 1400px*1600px</p>
-            <p>Logo size: 320px*320px</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ascent Pretty Logs</title>
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-black text-white" style="font-family: 'Montserrat'">
+    <div id="panel" class="m-4 p-4 bg-gray-900">
+      <h1 class="mb-4 text-6xl font-thin text-center">
+        Ascent Stats Image Thingie
+      </h1>
 
-            <input id="match-url" placeholder="https://logs.tf/123..." />
-            <button id="load-match">Load</button>
-            <br />
+      <div class="flex flex-wrap justify-around items-center">
+        <div>
+          <h3 class="text-xl">Usage:</h3>
+          <ul class="list-disc">
+            <li>Click on team names, player names or score to edit</li>
+            <li>Click on class icons to cycle</li>
+            <li>Click on stats to highlight</li>
+          </ul>
+        </div>
 
-            <label for="#upload-esea">Upload ESEA stats:</label>
-            <input id="upload-esea" type="file" />
-            <br />
+        <div>
+          <form id="load-match" action="#" class="my-4">
+            <label class="block font-bold" for="match-url">Logs.tf URL or ID</label>
+            <input id="match-url" class="text-black" />
 
-            <button id="reorder-players">Reorder</button>
-            <br />
+            <input
+              type="submit"
+              class="px-2 bg-gray-100 text-black cursor-pointer"
+              value="Load"
+            />
+          </form>
 
-            <button id="swap-teams">Swap teams</button>
-            <br />
+          <button
+            id="reorder-players"
+            class="my-4 block px-2 bg-gray-100 text-black"
+          >
+            Reorder players by class
+          </button>
 
-            <label for="#upload-background">Pick a background picture:</label>
+          <button
+            id="swap-teams"
+            class="my-4 block px-2 bg-gray-100 text-black"
+          >
+            Swap teams
+          </button>
+
+          <button id="download" class="block my-4 px-2 bg-gray-100 text-black">
+            Download result
+          </button>
+        </div>
+
+        <div>
+          <div class="my-4">
+            <label class="block font-bold" for="upload-background">
+              Pick a background picture: (1400px * 1600px)
+            </label>
             <input id="upload-background" type="file" accept="image/*" />
-            <br />
+          </div>
 
-            <label for="#upload-blu-logo">Pick a logo for blu team:</label>
+          <div class="my-4">
+            <label class="block font-bold" for="upload-blu-logo">
+              Pick a logo for blu team: (320px * 320px)
+            </label>
             <input id="upload-blu-logo" type="file" accept="image/*" />
-            <br />
+          </div>
 
-            <label for="#upload-red-logo">Pick a logo for red team:</label>
+          <div class="my-4">
+            <label class="block font-bold" for="upload-red-logo">
+              Pick a logo for red team: (320px * 320px)
+            </label>
             <input id="upload-red-logo" type="file" accept="image/*" />
-            <br />
-
-            <button id="download">Download result</button>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div id="render">
-            <span id="message" contenteditable>GG!</span>
-            <span id="blu-name" contenteditable>ASCENT</span>
-            <img id="blu-logo" src="ascent-logo.png">
-            <span id="blu-score" contenteditable>0</span>
-            <span id="score-sep">-</span>
-            <span id="red-score" contenteditable>0</span>
-            <img id="red-logo" src="blank-logo.png">
-            <span id="red-name" contenteditable>TEAM</span>
-            <table id="stats"></table>
-            <div id = "legend"></div>
-        </div>
-    </body>
-    <script src="html2canvas.min.js"></script>
-    <script src="script.js"></script>
+    <div
+      id="render"
+      class="my-4 px-12 py-6 mx-auto bg-white bg-center bg-cover text-black"
+      style="width: 1400px; height: 1600px"
+    >
+      <span id="message" class="text-6xl text-center" contenteditable>GG!</span>
+
+      <span
+        id="blu-name"
+        class="text-6xl text-center truncate w-full"
+        contenteditable
+        >Ascent</span
+      >
+      <img id="blu-logo" style="width: 320px" src="ascent-logo.png" />
+      <span
+        id="blu-score"
+        class="font-bold"
+        style="font-size: 16rem"
+        contenteditable
+        >0</span
+      >
+
+      <span id="score-sep" style="font-size: 8rem">-</span>
+
+      <span
+        id="red-score"
+        class="font-bold"
+        style="font-size: 16rem"
+        contenteditable
+        >0</span
+      >
+      <img id="red-logo" style="width: 320px" src="blank-logo.png" />
+      <span
+        id="red-name"
+        class="text-6xl text-center truncate w-full"
+        contenteditable
+        >Opponents</span
+      >
+
+      <table id="stats" class="border-separate w-full"></table>
+
+      <div id="legend" class="text-lg text-center text-gray-600 font-semibold">
+        K = KILLS &middot; A = ASSISTS &middot; D = DEATHS &middot; DA = DAMAGE
+        &middot; DT = DAMAGE TAKEN &middot; HR = HEALS RECEIVED &middot; M =
+        MINUTE
+      </div>
+    </div>
+  </body>
+
+  <script src="html2canvas.min.js"></script>
+  <script src="script.js"></script>
 </html>
