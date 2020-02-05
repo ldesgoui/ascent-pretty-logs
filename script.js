@@ -73,15 +73,15 @@ let loadUrl = async () => {
       p => `
         <tr class="text-2xl leading-loose text-right bg-gray-300">
           <td class="px-4 font-bold text-left" contenteditable>${p.name}</td>
-          <td class="class-${p.class} bg-center" style="width: 50px" onclick="cycleClass(this)"></td>
-          <td class="px-4" onclick="hl(this)">${p.dmg}</td>
-          <td class="px-4" onclick="hl(this)">${p.kills}</td>
-          <td class="px-4" onclick="hl(this)">${p.assists}</td>
-          <td class="px-4" onclick="hl(this)">${p.deaths}</td>
-          <td class="px-4" onclick="hl(this)">${p.kpd}</td>
-          <td class="px-4" onclick="hl(this)">${p.dapm}</td>
-          <td class="px-4" onclick="hl(this)">${p.dtpm}</td>
-          <td class="px-4" onclick="hl(this)">${p.hrpm}</td>
+          <td class="border-l class-${p.class} bg-center" style="width: 52px" onclick="cycleClass(this)"></td>
+          <td class="border-l px-4" onclick="hl(this)">${p.dmg}</td>
+          <td class="border-l px-4" onclick="hl(this)">${p.kills}</td>
+          <td class="border-l px-4" onclick="hl(this)">${p.assists}</td>
+          <td class="border-l px-4" onclick="hl(this)">${p.deaths}</td>
+          <td class="border-l px-4" onclick="hl(this)">${p.kpd}</td>
+          <td class="border-l px-4" onclick="hl(this)">${p.dapm}</td>
+          <td class="border-l px-4" onclick="hl(this)">${p.dtpm}</td>
+          <td class="border-l px-4" onclick="hl(this)">${p.hrpm}</td>
         </tr>
       `
     )
