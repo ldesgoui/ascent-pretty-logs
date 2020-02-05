@@ -52,6 +52,10 @@
   grid-area: stats;
 }
 
+tr td {
+    border-left: solid 1px white;
+}
+
 tr:nth-child(-n + 7) td:first-child {
   border-left: solid 4px #00aef0;
 }
