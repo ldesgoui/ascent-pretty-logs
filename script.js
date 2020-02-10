@@ -29,7 +29,7 @@ let loadUrl = async () => {
     return;
   }
 
-  let r = await fetch(`http://logs.tf/json/${match[1]}`);
+  let r = await fetch(`https://logs.tf/json/${match[1]}`);
 
   if (r.status !== 200) {
     alert("Match not found");
